@@ -18,8 +18,7 @@ class MainActivity : AppCompatActivity(),  AndroidFragmentApplication.Callbacks 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        if( false
-            //viewModel.writeToSharedPreference(getSharedPreferences("myPrefs", Context.MODE_PRIVATE))
+        if( viewModel.writeToSharedPreference(getSharedPreferences("myPrefs", Context.MODE_PRIVATE))
         ) {
             val fragment = WebViewFragment()
             supportFragmentManager.beginTransaction()
