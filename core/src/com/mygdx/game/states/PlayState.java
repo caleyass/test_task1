@@ -1,6 +1,7 @@
 package com.mygdx.game.states;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -12,7 +13,7 @@ import com.mygdx.game.sprites.Tube;
 
 
 public class PlayState extends State{
-
+    public static int bestScore = 0;
     public static final int TUBE_SPACING = 90;
     public static final int TUBE_COUNT = 4;
 
@@ -58,7 +59,7 @@ public class PlayState extends State{
             }
             if(tube.collides(dron.getBounds())) {
                 System.out.println("collide");
-                gsm.set(new GameOverState(gsm));
+                gsm.set(new GameOverState(gsm, score));
             }
             else if(tube.isDronPassed(dron)) {
                 tube.setPassed(true);
@@ -87,6 +88,12 @@ public class PlayState extends State{
 
     @Override
     public void dispose() {
+        if(score > bestScore) {
+            bestScore = score;
+            Preferences prefs = Gdx.app.getPreferences("MyGamePreferences");
+            prefs.putInteger("bestScore", PlayState.bestScore);
+            prefs.flush();
+        }
         background.dispose();
         dron.dispose();
         for(Tube tube : tubes){
