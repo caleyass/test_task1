@@ -20,6 +20,12 @@ public class Tube {
     private Random rand;
     private Rectangle boundsTop, boundsBot;
 
+    public void setPassed(boolean passed) {
+        isPassed = passed;
+    }
+
+    private boolean isPassed;
+
 
     public Tube(float x){
         topTube = new Texture("top_tube.png");
@@ -31,7 +37,7 @@ public class Tube {
 
         boundsTop = new Rectangle(posTopTube.x, posTopTube.y, topTube.getWidth()-20, topTube.getHeight()-10);
         boundsBot = new Rectangle(posBotTube.x, posBotTube.y, botTube.getWidth()-20, botTube.getHeight()-10);
-
+        isPassed = false;
     }
 
     public void reposition(float x){
@@ -43,6 +49,10 @@ public class Tube {
 
     public boolean collides(Rectangle player){
         return player.overlaps(boundsTop) || player.overlaps(boundsBot);
+    }
+
+    public boolean isDronPassed(Dron dron) {
+        return (dron.getPosition().x > posTopTube.x + topTube.getWidth()) && !isPassed;
     }
 
 
@@ -60,6 +70,10 @@ public class Tube {
 
     public Vector2 getPosBotTube() {
         return posBotTube;
+    }
+
+    public boolean isPassed() {
+        return isPassed;
     }
 
 

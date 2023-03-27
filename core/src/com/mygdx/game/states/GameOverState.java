@@ -12,14 +12,12 @@ import com.mygdx.game.FlappyDemo;
 
 public class GameOverState extends State{
     private final Texture background;
-    private final Texture playButton;
     private BitmapFont font;
 
 
     public GameOverState(GameStateManager gsm) {
         super(gsm);
         background = new Texture("bg.png");
-        playButton = new Texture("play.png");
         font = new BitmapFont();
         camera.setToOrtho(false, FlappyDemo.WIDTH / 2,FlappyDemo.HEIGHT/2);
 
@@ -50,6 +48,6 @@ public class GameOverState extends State{
     @Override
     public void dispose() {
         background.dispose();
-        playButton.dispose();
+        font.dispose();
     }
 }
