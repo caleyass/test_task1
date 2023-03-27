@@ -28,13 +28,10 @@ class MainActivity : AppCompatActivity(),  AndroidFragmentApplication.Callbacks 
 
         }
         else{
-            // Create libgdx fragment
 
             // Create libgdx fragment
             val libgdxFragment =
                 GameFragment()
-
-            // Put it inside the framelayout (which is defined in the layout.xml file).
 
             // Put it inside the framelayout (which is defined in the layout.xml file).
             supportFragmentManager.beginTransaction().add(R.id.fragment_container, libgdxFragment)
@@ -43,7 +40,6 @@ class MainActivity : AppCompatActivity(),  AndroidFragmentApplication.Callbacks 
     }
 
     override fun exit() {
-        TODO("Not yet implemented")
     }
 
     /*@SuppressLint("ServiceCast")
