@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.badlogic.gdx.backends.android.AndroidFragmentApplication
-import com.mygdx.game.GameFragment
+import com.mygdx.game.presentation.fragment.GameFragment
 import com.mygdx.game.R
 import com.mygdx.game.presentation.fragment.WebViewFragment
 import com.mygdx.game.presentation.viewmodel.MyViewModel
@@ -13,7 +13,7 @@ import com.mygdx.game.presentation.viewmodel.MyViewModel
 
 class MainActivity : AppCompatActivity(),  AndroidFragmentApplication.Callbacks {
     
-    val viewModel: MyViewModel by viewModels()
+    private val viewModel: MyViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +31,8 @@ class MainActivity : AppCompatActivity(),  AndroidFragmentApplication.Callbacks 
             // Create libgdx fragment
 
             // Create libgdx fragment
-            val libgdxFragment = GameFragment()
+            val libgdxFragment =
+                GameFragment()
 
             // Put it inside the framelayout (which is defined in the layout.xml file).
 

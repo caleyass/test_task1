@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.game.presentation.fragment;
 
 
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.badlogic.gdx.backends.android.AndroidFragmentApplication;
+import com.mygdx.game.FlappyDemo;
 
 public class GameFragment extends AndroidFragmentApplication{
 
