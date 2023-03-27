@@ -19,9 +19,7 @@ public class MenuState extends State{
     @Override
     protected void handleInput() {
         if(Gdx.input.justTouched()){
-            playButton.dispose();
             gsm.set(new PlayState(gsm));
-
         }
     }
 

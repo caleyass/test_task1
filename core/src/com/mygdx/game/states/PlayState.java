@@ -2,6 +2,7 @@ package com.mygdx.game.states;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.FlappyDemo;
@@ -18,6 +19,8 @@ public class PlayState extends State{
     private final Texture background;
     private Array<Tube> tubes;
 
+
+
     public PlayState(GameStateManager gsm) {
         super(gsm);
         dron = new Dron(50, 150);
@@ -25,6 +28,7 @@ public class PlayState extends State{
         camera.setToOrtho(false, FlappyDemo.WIDTH / 2,FlappyDemo.HEIGHT/2);
 
         tubes = new Array<Tube>();
+
 
         for (int i = 0; i < TUBE_COUNT; i++){
             tubes.add(new Tube(i * (TUBE_SPACING + Tube.TUBE_WIDTH)));
@@ -49,10 +53,9 @@ public class PlayState extends State{
                 tube.reposition(tube.getPosTopTube().x + ((Tube.TUBE_WIDTH + TUBE_SPACING) * TUBE_COUNT));
             }
             if(tube.collides(dron.getBounds())) {
-                System.out.println(dron.getBounds().x);
-                System.out.println(dron.getPosition().x);
                 System.out.println("collide");
-                gsm.set(new PlayState(gsm));
+                gsm.set(new GameOverState(gsm));
+
             }
         }
         camera.update();
@@ -68,6 +71,7 @@ public class PlayState extends State{
             sb.draw(tube.getTopTube(), tube.getPosTopTube().x, tube.getPosTopTube().y);
             sb.draw(tube.getBotTube(), tube.getPosBotTube().x, tube.getPosBotTube().y);
         }
+
         sb.end();
     }
 
